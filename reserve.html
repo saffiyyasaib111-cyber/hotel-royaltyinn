@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reserve | Royalty Inn Exclusive</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,700&family=Montserrat:wght@200;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #050505;
+            --gold: #d4af37;
+            --white: #ffffff;
+            --glass: rgba(255, 255, 255, 0.02);
+            --border: rgba(212, 175, 55, 0.2);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body { 
+            background-color: var(--bg); 
+            color: var(--white); 
+            font-family: 'Montserrat', sans-serif; 
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* --- ADAPTIVE NAV --- */
+        nav {
+            position: fixed; top: 15px; left: 50%; transform: translateX(-50%);
+            width: 95%; max-width: 1200px; 
+            min-height: 60px;
+            background: rgba(10, 10, 10, 0.9); backdrop-filter: blur(15px);
+            border: 1px solid var(--border); border-radius: 20px;
+            display: flex; flex-wrap: wrap; 
+            justify-content: space-between; align-items: center;
+            padding: 10px 25px; z-index: 1000;
+        }
+        
+        .logo { font-family: 'Playfair Display', serif; font-size: 1rem; letter-spacing: 2px; color: var(--gold); text-decoration: none; }
+        .back-link { font-size: 0.6rem; color: #fff; text-decoration: none; text-transform: uppercase; letter-spacing: 2px; opacity: 0.6; }
+
+        /* --- MAIN LAYOUT --- */
+        .reserve-container {
+            display: flex;
+            flex-direction: row; /* Side-by-side for laptop */
+            min-height: 100vh;
+            width: 100%;
+        }
+
+        /* LEFT SIDE: THE EXPERIENCE */
+        .reserve-visual {
+            flex: 1;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1571896349842-33c89424de2d?q=80&w=2070');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 80px 10% 40px;
+        }
+
+        .reserve-visual h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 5vw, 4.5rem); line-height: 1.1; margin-bottom: 20px; }
+        .reserve-visual p { font-weight: 200; opacity: 0.7; line-height: 1.8; max-width: 450px; font-size: 0.9rem; }
+
+        /* RIGHT SIDE: THE FORM */
+        .reserve-form-side {
+            flex: 1;
+            background: #080808;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 100px 20px 60px; /* Padding for nav space */
+            border-left: 1px solid var(--border);
+        }
+
+        .booking-card {
+            width: 100%;
+            max-width: 450px;
+            background: var(--glass);
+            border: 1px solid var(--border);
+            padding: 30px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px; color: var(--gold); }
+        
+        input, select {
+            width: 100%;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 12px;
+            border-radius: 8px;
+            color: #fff;
+            font-family: inherit;
+            outline: none;
+            font-size: 0.9rem;
+        }
+        
+        input:focus, select:focus { border-color: var(--gold); }
+
+        .btn-confirm {
+            width: 100%;
+            padding: 18px;
+            background: var(--gold);
+            color: #000;
+            border: none;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        /* --- MOBILE ADAPTATION --- */
+        @media (max-width: 1000px) {
+            .reserve-container { flex-direction: column; } /* Stack vertically */
+            
+            .reserve-visual { 
+                min-height: 50vh; 
+                padding: 120px 30px 60px; 
+                text-align: center;
+                align-items: center;
+            }
+            
+            .reserve-form-side { 
+                padding: 40px 20px 80px; 
+                border-left: none; 
+                border-top: 1px solid var(--border);
+            }
+
+            nav { justify-content: center; gap: 10px; padding: 15px; }
+            .back-link { width: 100%; text-align: center; order: 2; }
+            .logo { order: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="logo">ROYALTY INN</a>
+        <a href="gallery.html" class="back-link">← Gallery</a>
+    </nav>
+
+    <div class="reserve-container">
+        
+        <!-- VISUAL EXPERIENCE -->
+        <section class="reserve-visual">
+            <p style="letter-spacing: 5px; color: var(--gold); font-size: 0.6rem; margin-bottom: 10px; text-transform: uppercase;">Secure Your Stay</p>
+            <h1>Your Masterpiece Awaits.</h1>
+            <p>Complete your reservation to experience the peak of Pietermaritzburg luxury. Our digital concierge will finalize your details within minutes.</p>
+        </section>
+
+        <!-- BOOKING INTERFACE -->
+        <section class="reserve-form-side">
+            <div class="booking-card">
+                <form id="bookingForm">
+                    <div class="form-group">
+                        <label>Select Suite</label>
+                        <select required>
+                            <option value="" disabled selected>Choose experience...</option>
+                            <option>The Gold Suite</option>
+                            <option>The Heritage Room</option>
+                            <option>The Penthouse</option>
+                            <option>Botanical Spa Day Pass</option>
+                        </select>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                        <div class="form-group">
+                            <label>Check In</label>
+                            <input type="date" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Check Out</label>
+                            <input type="date" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Guests</label>
+                        <input type="number" min="1" max="4" placeholder="1-4 Guests">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" placeholder="Entry for Concierge" required>
+                    </div>
+
+                    <button type="submit" class="btn-confirm">Confirm Reservation</button>
+                    
+                    <p style="font-size: 0.5rem; text-align: center; margin-top: 20px; opacity: 0.4; letter-spacing: 1px;">
+                        ENCRYPTED BY ROYALTY SYSTEMS &copy; 2026
+                    </p>
+                </form>
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        document.getElementById('bookingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = document.querySelector('.btn-confirm');
+            btn.innerHTML = "REQUEST SENT...";
+            btn.style.background = "#fff";
+            
+            setTimeout(() => {
+                alert("Thank you. Our concierge will contact you shortly.");
+                window.location.href = "index.html";
+            }, 1500);
+        });
+    </script>
+
+</body>
+</html>
